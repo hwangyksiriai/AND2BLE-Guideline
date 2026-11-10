@@ -69,7 +69,7 @@
   if (status) {
     var DAY = 86400000;
     var start = Date.UTC(2026, 10, 8, 15, 0, 0);   // 2026-11-09 00:00 JST
-    var end = Date.UTC(2026, 10, 15, 15, 0, 0);    // 2026-11-16 00:00 JST
+    var end = Date.UTC(2026, 10, 18, 15, 0, 0);    // 2026-11-19 00:00 JST
     var now = Date.now();
     var todayJst = Math.floor((now + 9 * 3600000) / DAY);
     var label, cls;
