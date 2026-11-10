@@ -69,7 +69,9 @@
   if (status) {
     var DAY = 86400000;
     var start = Date.UTC(2026, 10, 8, 15, 0, 0);   // 2026-11-09 00:00 JST
-    var end = Date.UTC(2026, 10, 15, 15, 0, 0);    // 2026-11-16 00:00 JST
+    // 마지막 날은 .status 의 data-end (YYYY-MM-DD, 일본 시간) 로 페이지마다 정할 수 있다. 없으면 11/15.
+    var endDay = (status.getAttribute('data-end') || '2026-11-15').split('-');
+    var end = Date.UTC(+endDay[0], +endDay[1] - 1, +endDay[2], 15, 0, 0); // 마지막 날 다음 날 00:00 JST
     var now = Date.now();
     var todayJst = Math.floor((now + 9 * 3600000) / DAY);
     var label, cls;
