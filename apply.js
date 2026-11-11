@@ -2,9 +2,32 @@
   // Google Apps Script 웹앱 URL (google-apps-script.gs 를 배포한 뒤 발급되는 ".../exec" 링크)
   var GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTqppyZh_NuLk32pw5cOcv91kg2yIs7IPtyFHzWznhjDYTYBXPn5F-ICmA_A6OATIj/exec';
 
+  // 모집 마감 스위치: true = 신청 폼을 회색으로 막고 마감 안내를 띄운다. 다시 열려면 false 로 바꾼다.
+  var CLOSED = true;
+
   var form = document.getElementById('applyForm');
   if (!form) return;
   var lang = document.documentElement.lang === 'ko' ? 'ko' : 'ja';
+
+  if (CLOSED) {
+    var sec = document.getElementById('apply');
+    var C = {
+      ja: { t: '募集は締め切りました', p: 'たくさんのお申し込みをありがとうございます。<br>予定人数に達したため、現在お申し込みの受付を一時停止しています。' },
+      ko: { t: '모집이 마감되었어요', p: '많은 성원에 감사드립니다.<br>모집 인원이 다 차서 지금은 신청 접수를 잠시 멈췄어요.' }
+    }[lang];
+    sec.classList.add('is-closed');
+    var note = document.createElement('div');
+    note.className = 'closed-note';
+    note.innerHTML = '<span class="closed-tag">CLOSED</span><b>' + C.t + '</b><p>' + C.p + '</p>';
+    var stepper = sec.querySelector('.stepper');
+    sec.insertBefore(note, stepper || form);
+    form.querySelectorAll('input, button, select, textarea').forEach(function (el) { el.disabled = true; el.tabIndex = -1; });
+    form.setAttribute('aria-disabled', 'true');
+    form.addEventListener('submit', function (e) { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+    form.addEventListener('click', function (e) { e.preventDefault(); e.stopImmediatePropagation(); }, true);
+    document.querySelectorAll('a.cta[href="#apply"]').forEach(function (a) { a.classList.add('is-closed'); });
+    return;
+  }
 
   var T = {
     ja: {

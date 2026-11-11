@@ -618,3 +618,13 @@ footer { text-align: center; color: var(--muted); font-size: 11px; letter-spacin
 .fix-box p b { color: var(--ng); }
 .fix-main { font-size: 17px !important; font-weight: 900; margin-bottom: 0 !important; }
 .fix-main mark { background: linear-gradient(transparent 45%, #ffd0d2 45%); color: var(--ng); padding: 0 2px; }
+
+/* recruiting closed (apply.js CLOSED switch) */
+#apply.is-closed { border-color: #cfcac2; }
+#apply.is-closed .kicker, #apply.is-closed h2, #apply.is-closed .lead { color: #9a958d; }
+#apply.is-closed .stepper, #apply.is-closed form { filter: grayscale(1); opacity: .4; pointer-events: none; user-select: none; }
+.closed-note { margin: 4px 0 18px; padding: 16px; border-radius: 14px; background: #f1efeb; border: 2px solid #cfcac2; text-align: center; color: #55514b; }
+.closed-note b { display: block; font-size: 18px; font-weight: 900; color: #3a3733; margin: 8px 0 6px; }
+.closed-note p { margin: 0; font-size: 14px; line-height: 1.7; }
+.closed-tag { display: inline-block; background: #7d7870; color: #fff; font-size: 12px; font-weight: 900; letter-spacing: .12em; padding: 3px 12px; border-radius: 999px; }
+.fnav a.cta.is-closed { filter: grayscale(1); opacity: .6; }
