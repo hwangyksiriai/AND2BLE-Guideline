@@ -4,8 +4,8 @@
 
   // 모집 마감 스위치: true = 신청 폼을 회색으로 막고 마감 안내를 띄운다. 다시 열려면 false 로 바꾼다.
   var CLOSED = true;
-  // 마감 중에도 신청을 받는 페이지 (폼의 data-source 값). main2 = 2차 모집 페이지(ja-2.html / ko-2.html)
-  var OPEN_SOURCES = ['main2'];
+  // 마감 중에도 신청을 받는 페이지 (폼의 data-source 값). main = 기본 모집(ja.html / ko.html), main2 = 2차 모집(ja-2.html / ko-2.html)
+  var OPEN_SOURCES = ['main', 'main2'];
 
   var form = document.getElementById('applyForm');
   if (!form) return;
