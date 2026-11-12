@@ -4,12 +4,15 @@
 
   // 모집 마감 스위치: true = 신청 폼을 회색으로 막고 마감 안내를 띄운다. 다시 열려면 false 로 바꾼다.
   var CLOSED = true;
+  // 마감 중에도 신청을 받는 페이지 (폼의 data-source 값). main2 = 2차 모집 페이지(ja-2.html / ko-2.html)
+  var OPEN_SOURCES = ['main2'];
 
   var form = document.getElementById('applyForm');
   if (!form) return;
   var lang = document.documentElement.lang === 'ko' ? 'ko' : 'ja';
+  var source = form.getAttribute('data-source') || 'main';
 
-  if (CLOSED) {
+  if (CLOSED && OPEN_SOURCES.indexOf(source) === -1) {
     var sec = document.getElementById('apply');
     var C = {
       ja: { t: '募集は締め切りました', p: 'たくさんのお申し込みをありがとうございます。<br>予定人数に達したため、現在お申し込みの受付を一時停止しています。' },

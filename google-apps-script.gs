@@ -5,7 +5,8 @@
  *   - 기본 모집 페이지(ja.html / ko.html)와 TikTok / Instagram 모집 페이지(ja-tt, ko-tt, ja-ig, ko-ig)
  *     신청이 모두 이 한 탭에 들어온다.
  *   - A~J열: 신청 내용 (기존과 같음). K열 '선정여부' 등 직접 쓰는 칸은 건드리지 않는다.
- *   - 어느 페이지에서 신청했는지는 '신청 페이지' 제목이 붙은 칸에 기본 / TikTok / Instagram 으로 남긴다.
+ *   - 어느 페이지에서 신청했는지는 '신청 페이지' 제목이 붙은 칸에 기본 / 2차 모집 / TikTok / Instagram 으로 남긴다.
+ *     (2차 모집 = ja-2.html / ko-2.html)
  *     그 칸이 없으면 제목 줄의 맨 오른쪽 빈 칸에 '신청 페이지' 제목을 만들어 쓴다.
  * (https://docs.google.com/spreadsheets/d/1T1i3U-lNK0yE0dv0L_adKKv5OOw5NY-BT8PGSDDyWYU/edit?gid=1002)
  *
@@ -18,7 +19,7 @@ var SPREADSHEET_ID = '1T1i3U-lNK0yE0dv0L_adKKv5OOw5NY-BT8PGSDDyWYU';
 var SHEET_GID = 1002; // 모든 신청이 들어올 탭 (주소의 gid 값)
 var HEADERS = ['제출 시각', '언어', '이름', '이메일', '연락처', '참여 방식', 'TikTok', 'Instagram', '업로드 예정일', '기프트카드'];
 var SOURCE_HEADER = '신청 페이지';
-var SOURCE_LABEL = { main: '기본', tt: 'TikTok', ig: 'Instagram' };
+var SOURCE_LABEL = { main: '기본', main2: '2차 모집', tt: 'TikTok', ig: 'Instagram' };
 
 // 탭은 gid 로 찾으므로 탭 이름을 바꿔도 된다.
 function getTargetSheet_() {
